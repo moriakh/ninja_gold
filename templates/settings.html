@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ninja Money</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static '/ng/style.css' %}">
+</head>
+<body>
+    <div class="container">
+                <form method="POST" action="/settings">
+                    {% csrf_token %}
+                    <div class="row mb-3 mt-3">
+                        <div class="col-3 m-1 border border-primary">
+                            Farm
+                            <br>
+                            <label for="exampleInputEmail1" class="form-label">Mínimo</label>
+                            <input type="text" class="form-control" id="farm_min" name="farm_min">
+                            <label for="exampleInputEmail1" class="form-label">Máximo</label>
+                            <input type="text" class="form-control" id="farm_max" name="farm_max">
+                        </div>
+                        <div class="col-3 m-1 border border-primary">
+                            Houses
+                            <br>
+                            <label for="exampleInputEmail1" class="form-label">Mínimo</label>
+                            <input type="text" class="form-control" id="house_min" name="house_min">
+                            <label for="exampleInputEmail1" class="form-label">Máximo</label>
+                            <input type="text" class="form-control" id="house_max" name="house_max">
+                        </div>
+                        <div class="col-3 m-1 border border-primary">
+                            Caves
+                            <br>
+                            <label for="exampleInputEmail1" class="form-label">Mínimo</label>
+                            <input type="text" class="form-control" id="cave_min" name="cave_min">
+                            <label for="exampleInputEmail1" class="form-label">Máximo</label>
+                            <input type="text" class="form-control" id="cave_max" name="cave_max">
+                        </div>
+                        <div class="col-3 m-1 border border-primary">
+                            Casino
+                            <br>
+                            <label for="exampleInputEmail1" class="form-label">Mínimo</label>
+                            <input type="text" class="form-control" id="casino_min" name="casino_min">
+                            <label for="exampleInputEmail1" class="form-label">Máximo</label>
+                            <input type="text" class="form-control" id="casino_max" name="casino_max">
+                        </div>
+                    </div>
+                    <div class="row">
+                        Intentos
+                        <br>
+                        <label for="exampleInputEmail1" class="form-label">Cantidad de Intentos</label>
+                        <input type="text" class="form-control" id="tries" name="tries">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar</button>
+                </form>
+    </div>
+</body>
+</html>

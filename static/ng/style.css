@@ -1,0 +1,11 @@
+img{
+    margin-top: 6px;
+    width: 180px;  
+    height: 115px;  
+}
+
+#activities{
+    background-color: skyblue;
+    height: 10rem;
+    overflow: auto;
+}

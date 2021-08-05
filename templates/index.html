@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ninja Money</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static '/ng/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row bg-dark text-light fw-bold mt-3 mb-4">
+            {{request.session.name}}'s Gold: {{request.session.gold}}
+        </div>
+        <div class="row text-center">
+            <div class="col-2"></div>
+            <div class="col-2 m-1 border border-primary">
+                <img src="https://miro.medium.com/max/7264/1*yrZg7rjxzMp-nY74OMDH9g.jpeg">
+                <h1>
+                    Farm
+                </h1>
+                (earns/takes {{request.session.settings.farm.0}}-{{request.session.settings.farm.1}} golds)
+                <form method="POST" action="{%url 'money'%}">
+                    {% csrf_token %}
+                    <input type="hidden" id='farm' name='place' value='farm'>
+                    <button type="submit"class="btn btn-warning m-2">
+                        Find Gold!
+                    </button>
+                </form>
+            </div>
+            <div class="col-2 m-1 border border-primary">
+                <img src="https://www.rebornevo.com/uploads/monthly_2019_01/494553918_CapturadeTela2019-01-03as23_52_10.thumb.png.230c3076f8bc0e0108d68b9c757db687.png">
+                <h1>
+                    Cave
+                </h1>
+                (earns/takes {{request.session.settings.cave.0}}-{{request.session.settings.cave.1}} golds)
+                <form method="POST" action="{%url 'money'%}">
+                    {% csrf_token %}
+                    <input type="hidden" id='cave' name='place' value='cave'>
+                    <button type="submit"class="btn btn-warning m-2">
+                        Find Gold!
+                    </button>
+                </form>
+            </div>
+            <div class="col-2 m-1 border border-primary">
+                <img src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/10/Genshin-Impact-Dawn-Winery-1.jpg">
+                <h1>
+                    House
+                </h1>
+                (earns/takes {{request.session.settings.house.0}}-{{request.session.settings.house.1}} golds)
+                <form method="POST" action="{%url 'money'%}">
+                    {% csrf_token %}
+                    <input type="hidden" id='house' name='place' value='house'>
+                    <button type="submit"class="btn btn-warning m-2">
+                        Find Gold!
+                    </button>
+                </form>
+            </div>
+            <div class="col-2 m-1 border border-primary">
+                <img src="https://www.screengeek.net/wp-content/uploads/2016/10/casino.jpg">
+                <h1>
+                    Casino
+                </h1>
+                (earns/takes {{request.session.settings.casino.0}}-{{request.session.settings.casino.1}} golds)
+                <form method="POST" action="{%url 'money'%}">
+                    {% csrf_token %}
+                    <input type="hidden" id='casino' name='place' value='casino'>
+                    <button type="submit"class="btn btn-warning m-2">
+                        Find Gold!
+                    </button>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            Activities:
+            <div class="overflow-auto border border-dark mb-3" id="activities">
+                {% for i in request.session.activity %}
+                    <span class="text-{{i.color}}">{{i.activity}}</span> <br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-10"></div>
+            <div class="col-2">
+                <button onclick="window.location.href='/reset';" class="btn btn-danger m-2">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const activities = document.getElementById('activities')
+        activities.scrollTo(0, activities.scrollHeight)
+    </script>
+</body>
+</html>
